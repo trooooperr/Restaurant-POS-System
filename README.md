@@ -1,9 +1,9 @@
 <div>
 
-<h1>Club POS System (V2.1 — Production Grade Hospitality ERP)</h1>
+<h1>Club POS System (V2.1 — Production Grade ERP)</h1>
 
 <p>
-A <b>premium, production-ready Club POS & Management System</b> designed for modern hospitality businesses.
+A <b>premium, production-ready Club POS & Management System</b> built for a <b>modern Bar & Club</b>.
 Engineered with <b>enterprise-level architecture, atomic data integrity, and modern UI/UX</b>, this system goes beyond a traditional POS and delivers a <b>full-scale hospitality ERP solution</b>.
 </p>
 
@@ -22,35 +22,36 @@ Engineered with <b>enterprise-level architecture, atomic data integrity, and mod
 <h2>System Overview</h2>
 
 <p>
-The system follows a modular architecture with high-performance billing, secure role-based access, and real-time synchronization, making it suitable for busy club and hospitality environments.
+The Club POS System V2.1 introduces a strict separation architecture, high-performance billing, and role-secured operations,
+making it suitable for real-world club environments with high concurrency.
 </p>
 
 <hr/>
 
 <h2>Core Architecture (Separation of Concerns)</h2>
 
-<h3>Kitchen Menu (Food Service Layer)</h3>
+<h3>Kitchen Menu (Food Layer)</h3>
 
 <ul>
-<li>Managed through a dedicated <b>Menu Collection</b></li>
-<li>Supports food-only items</li>
-<li>No inventory dependency for faster billing</li>
+<li>Managed via <b>Menu Collection</b></li>
+<li>Food-only items (Biryanis, Starters, Main Course)</li>
+<li>No stock dependency → faster billing</li>
 </ul>
 
-<h3>Beverage Inventory (Stock Layer)</h3>
+<h3>Bar Inventory (Stock Layer)</h3>
 
 <ul>
-<li>Managed through a dedicated <b>Inventory Collection</b></li>
-<li>Real-time inventory tracking</li>
-<li>Automatic stock deduction after every order</li>
+<li>Managed via <b>Inventory Collection</b></li>
+<li>Real-time stock tracking</li>
+<li>Automatic stock deduction</li>
 </ul>
 
 <h3>Unified Billing Engine</h3>
 
 <ul>
-<li>Dynamically combines menu and inventory items</li>
-<li>Supports multi-category billing</li>
-<li>Optimized for low-latency operations</li>
+<li>Merges Menu + Inventory dynamically</li>
+<li>Single-order multi-category billing</li>
+<li>Optimized for low latency</li>
 </ul>
 
 <hr/>
@@ -58,11 +59,11 @@ The system follows a modular architecture with high-performance billing, secure 
 <h2>Premium UI/UX</h2>
 
 <ul>
-<li>Modern Glassmorphism interface</li>
-<li>Responsive product grid with image previews</li>
-<li>Smooth hover animations</li>
-<li>Light & Dark themes</li>
-<li>Desktop, tablet, and mobile optimized</li>
+<li>Glassmorphism UI (blur + transparency)</li>
+<li>Fixed grid (130px) for product images</li>
+<li>Hover zoom effects</li>
+<li>Light/Dark themes</li>
+<li>Mobile optimized settlement UI</li>
 </ul>
 
 <hr/>
@@ -70,130 +71,106 @@ The system follows a modular architecture with high-performance billing, secure 
 <h2>Key Production Features</h2>
 
 <ul>
-<li><b>Atomic Bill Numbering:</b> Redis INCR prevents duplicate bill numbers</li>
-<li><b>Inventory Management:</b> MongoDB bulkWrite ensures atomic stock updates</li>
-<li><b>QR Ordering System:</b> Customers scan QR codes, browse menus, and place orders directly from their devices</li>
-<li><b>Real-Time Synchronization:</b> Customer orders instantly appear on the POS dashboard</li>
-<li><b>Silent Thermal Printing:</b> Automatic printing of KOTs and invoices</li>
-<li><b>System Resilience:</b> In-memory database fallback</li>
-<li><b>Scheduled Automation:</b> Node-Cron background jobs</li>
-<li><b>Image-Based Menu:</b> Product image support for better usability</li>
+<li><b>Atomic Bill Numbering:</b> Redis INCR (no duplicates)</li>
+<li><b>Atomic Stock Deduction:</b> MongoDB bulkWrite</li>
+<li><b>System Resilience:</b> In-memory DB fallback</li>
+<li><b>Visual Assets:</b> imageUrl support</li>
+<li><b>Automation:</b> Node-Cron scheduling</li>
 </ul>
 
 <hr/>
 
-<h2>Security & Role Management</h2>
+<h2>Security & RBAC</h2>
 
 <table>
-<tr>
-<th>Role</th>
-<th>Level</th>
-<th>Access</th>
-</tr>
-
-<tr>
-<td>Admin</td>
-<td>L3</td>
-<td>Full System Access</td>
-</tr>
-
-<tr>
-<td>Manager</td>
-<td>L2</td>
-<td>Operations & Reporting</td>
-</tr>
-
-<tr>
-<td>Staff</td>
-<td>L1</td>
-<td>Billing & Order Management</td>
-</tr>
-
+<tr><th>Role</th><th>Level</th><th>Access</th></tr>
+<tr><td>Admin</td><td>L3</td><td>Full control</td></tr>
+<tr><td>Manager</td><td>L2</td><td>Operations</td></tr>
+<tr><td>Staff</td><td>L1</td><td>Billing only</td></tr>
 </table>
 
 <ul>
 <li>JWT Authentication</li>
-<li>Role-Based Access Control (RBAC)</li>
-<li>Password Recovery via OTP</li>
+<li>Role isolation</li>
+<li>OTP recovery system</li>
 </ul>
 
 <hr/>
 
-<h2>E2E & Performance Testing</h2>
+<h2>E2E & Performance Test Report</h2>
 
 <p>
-Comprehensive End-to-End testing and stress testing were performed to validate production readiness.
+A complete <b>End-to-End (E2E) + Stress Testing Audit</b> was conducted to validate production readiness.
 </p>
 
 <table width="100%">
-
 <tr>
-<th align="left">Test</th>
-<th align="left">Status</th>
-<th align="left">Description</th>
+  <th align="left">Test Category</th>
+  <th align="left">Status</th>
+  <th align="left">Description</th>
 </tr>
 
 <tr>
-<td><b>Complete Order Flow</b></td>
-<td>PASS</td>
-<td>Order → Billing → Settlement → Inventory Update</td>
+<td><b>E2E Order Flow</b></td>
+<td><nobr>PASS</td>
+<td>Full cycle tested (Order → Billing → Settlement → Stock Update)</td>
 </tr>
 
 <tr>
 <td><b>Authentication & RBAC</b></td>
-<td>PASS</td>
-<td>Verified permission-based access control</td>
+<td><nobr>PASS</td>
+<td>Role restrictions verified (Manager blocked from Admin actions)</td>
 </tr>
 
 <tr>
 <td><b>Inventory Consistency</b></td>
-<td>PASS</td>
-<td>No stock mismatch during concurrent billing</td>
+<td><nobr>PASS</td>
+<td>No stock mismatch under concurrent billing</td>
 </tr>
 
 <tr>
 <td><b>Atomic Operations</b></td>
-<td>PASS</td>
-<td>Verified Redis and MongoDB transactional workflows</td>
+<td><nobr>PASS</td>
+<td>Redis bill generation + MongoDB bulkWrite verified</td>
 </tr>
 
 <tr>
 <td><b>Stress Test</b></td>
-<td>PASS</td>
-<td>Successfully processed 100+ parallel orders</td>
+<td><nobr>PASS</td>
+<td>Handled 100+ parallel orders without failure</td>
 </tr>
 
 <tr>
-<td><b>Load Test</b></td>
-<td>PASS</td>
+<td><b>Load Testing</b></td>
+<td><nobr>PASS</td>
 <td>Simulated 7,500 virtual users using Artillery</td>
 </tr>
 
 <tr>
-<td><b>Latency</b></td>
-<td>PASS</td>
-<td>Maintained low response time under heavy load</td>
+<td><b>Latency Benchmark</b></td>
+<td><nobr>PASS</td>
+<td>Average response time maintained under high load</td>
 </tr>
 
 <tr>
 <td><b>UI Stability</b></td>
-<td>PASS</td>
-<td>Smooth performance during continuous billing operations</td>
+<td><nobr>PASS</td>
+<td>No UI crashes or lag during rapid billing</td>
 </tr>
 
 </table>
 
 <p>
-<b>Result:</b> Production-ready application with stable performance under real-world hospitality workloads.
+<b>Result:</b> System is <b>production-ready</b> with stable performance under real-world club load conditions.
 </p>
 
 <hr/>
 
-<h2>Technology Stack</h2>
+<h2>Tech Stack</h2>
 
 <ul>
 <li><b>Frontend:</b> React 18, Vite</li>
-<li><b>Backend:</b> Node.js, Express.js</li>
+<li><b>Backend:</b> Node.js, Express</li>
 <li><b>Database:</b> MongoDB Atlas</li>
 <li><b>Caching:</b> Upstash Redis</li>
 <li><b>Testing:</b> Jest, Supertest, Artillery</li>
@@ -201,11 +178,11 @@ Comprehensive End-to-End testing and stress testing were performed to validate p
 
 <hr/>
 
-<h2>Deployment</h2>
+<h2>Deployment (Render)</h2>
 
 <pre>
-npm run build
-npm start
+Build: npm run build
+Start: npm start
 </pre>
 
 <pre>
@@ -229,17 +206,19 @@ npm run dev
 
 <hr/>
 
-<h2>Highlights</h2>
+<h2>Final Verdict</h2>
+
+<p>
+This system is a <b>production-grade ERP solution</b> demonstrating:
+</p>
 
 <ul>
-<li>Production-grade hospitality ERP architecture</li>
-<li>High-performance billing engine</li>
-<li>Real-time QR ordering workflow</li>
-<li>Atomic inventory management</li>
-<li>Enterprise-level RBAC security</li>
-<li>Automated thermal printing</li>
-<li>Responsive React-based UI</li>
-<li>Designed for real-world hospitality operations</li>
+<li>Advanced system design</li>
+<li>High concurrency handling</li>
+<li>Secure backend architecture</li>
+<li>Professional UI/UX</li>
 </ul>
+
+<p><b>Built for real-world club operations with speed and reliability.</b></p>
 
 </div>
